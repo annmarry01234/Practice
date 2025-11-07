@@ -1,21 +1,36 @@
-function gettask(){
-    const task = document.getElementById("task").value;
-    return task;
+function gettitle_content(){
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
+    return {title,content};
+
 }
-function addtask(){
-    const task = gettask();
-    if(task === ""){
-        alert("Please enter a task.");
-        return;
+addbtn.onclick = addnote;
+
+function addnote(){
+    const {title,content} = gettitle_content();
+    if (title=="")
+    {
+        alert("NO TASK AA?");
     }
+    const title1 = document.getElementById("title").value;
+    const content1 = document.getElementById("content").value;
     const li = document.createElement("li");
-    li.textContent = task;
+    li.textContent = title1 + ": " + content1;
+    document.getElementById("list").appendChild(li);
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 
-    const deletebutton = document.createElement("button");
-    deletebutton.textContent = "Delete";
-    deletebutton.onclick = li.remove();
+    const delb = document.createElement("button");
+    delb.textContent = "Finish oo?";
+    li.appendChild(delb);
+    delb.onclick = deleteit;
 
-    document.getElementById("tasklist").appendChild(li);
-      document.getElementById("task").value = "";
+    function deleteit(){
+        li.remove();
+    }
+
+const notes = JSON.parse(localStorage.getItem("notes"))||[];
+notes.push({title,content});
+localStorage.setItem("notes",JSON.stringify(notes));
 
 }
