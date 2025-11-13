@@ -1,35 +1,33 @@
-//partial
-interface User{
-    name:string; 
-    age:number;
-    email?:string;
+type s = Awaited<Promise<string>>;
+interface todo{
+    title : string;
+    description : string;
 }
-function updateUser(user:User,updates:Partial<User>){
-    return {...user,...updates};
-}
-
-function printUser(user:Required<User>){
-    console.log(user.name,user.age,user.email);
-}
-
-const  user1:User = {
-    name:"Alice",
-    age:30,
-    email:"jcnoidnsm"
-};
-const user2 = {
-    name:"Ann",
-    age:30,
-    email:""
+function updatetodo(Todo: todo, feildsToupdate:Partial<todo>){
+    return { ...Todo, ...feildsToupdate};
     
 }
+const todo1 = {
+    title :"ehjfvyudwb",
+    description:"dhsfnun"
+}
 
-const readonlyUser:Readonly<User> = {
-    name:"Bob",
-    age:25
-};
+const todo2 = {
+    title :"ehjfvyudwb",
+    description:"dhsfnun"
+}
 
-// readonlyUser.age=26; // Error: Cannot assign to 'age' because it is a read-only property.
-const updatedUser = updateUser (user1,{age:31});
-const up = printUser(user2);
-console.log ( readonlyUser);
+interface chumma{
+    s?:number;
+    d? :number;
+}
+const ob:chumma =  {s : 5};
+const ob1 : Required<chumma> = {s:5,d:3};
+
+interface pinnem{
+    s : number;
+}
+
+const pin:Readonly<pinnem>={
+    s : 2
+}
